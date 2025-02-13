@@ -4,7 +4,7 @@ CrowdNet API es una aplicación backend desarrollada en **Java** utilizando el f
 
 La API ya se encuentra deployeada en Render, por lo que **no es necesario configurarla o ejecutarla localmente**. Puedes acceder a ella mediante el siguiente enlace:
 
-[https://crowdnet-api-2-0.onrender.com/](https://crowdnet-api-2-0.onrender.com/)
+[https://crowdnet-api.onrender.com/](https://crowdnet-api.onrender.com/)
 
 Si deseas ver **CrowdNet API en acción dentro del proyecto Capital Connection**, puedes visitar la plataforma en el siguiente enlace:
 
@@ -24,7 +24,7 @@ CrowdNet API ofrece todos los servicios necesarios para el funcionamiento de [**
 
 Para utilizar la API, simplemente realiza tus peticiones HTTP a la siguiente URL base:
 
-[https://crowdnet-api-2-0.onrender.com/](https://crowdnet-api-2-0.onrender.com/)
+[https://crowdnet-api.onrender.com/](https://crowdnet-api.onrender.com/)
 
 Puedes probar los endpoints utilizando herramientas como **Postman** o integrándolos en tu aplicación frontend.
 
