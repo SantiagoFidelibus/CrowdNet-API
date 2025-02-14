@@ -255,7 +255,7 @@ private AccountService accountService;
                 if (familyName != null && !familyName.isEmpty()) {
                     responseMap.put("family_name", familyName);
                 }
-
+                responseMap.put("provider_id", providerId);
                 // Redirigir al frontend
                 return ResponseEntity.ok(responseMap);
             } else {

@@ -100,7 +100,7 @@ public class AccountController {
         try {
             // Si no hay password, intentamos obtener el providerId de la cookie
             if (accountRequest.getPassword() == null || accountRequest.getPassword().isEmpty()) {
-                String providerId = getProviderIdFromCookie(request);  // Recupera el provider_id de la cookie
+                String providerId = accountRequest.getProviderId(); // Recupera el provider_id de la cookie
                 System.out.println(providerId);
                 if (providerId != null) {
                     accountRequest.setProviderId(providerId); // Asigna el provider_id al account
