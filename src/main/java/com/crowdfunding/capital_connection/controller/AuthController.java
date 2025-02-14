@@ -236,7 +236,7 @@ private AccountService accountService;
                 Cookie providerIdCookie = new Cookie("provider_id", providerId);
                 providerIdCookie.setDomain(domain);  // Configurar el dominio correcto
                 providerIdCookie.setPath("/");       // Establecer ruta accesible globalmente
-                providerIdCookie.setHttpOnly(true);
+                providerIdCookie.setHttpOnly(false);
                 providerIdCookie.setSecure(domain.equals("capital-connection.onrender.com")); // Solo HTTPS en producción
                 providerIdCookie.setMaxAge(60 * 60); // Duración de la cookie
 
