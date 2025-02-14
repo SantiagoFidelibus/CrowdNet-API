@@ -108,7 +108,9 @@ public class SecurityConfig {
                                 "/auth/oauth2/token",
                                 "/entrepreneurships/**",
                                 "/auth/cookie",
-                                "/accounts/{accountid}/donations/{id}"  // Permitimos todas las rutas de donaciones con cualquier id
+                                "/accounts/{accountid}/donations/{id}",
+                                "/accounts/exists/username/**",
+                                "/accounts/exists/email/**"// Permitimos todas las rutas de donaciones con cualquier id
 // Permitir acceso a esta ruta sin login
                         ).permitAll() // Permitir login, token y callback
                         .anyRequest().authenticated() // Requiere autenticación para otras rutas
