@@ -189,13 +189,11 @@ private AccountService accountService;
         if (code == null) {
             return ResponseEntity.badRequest().body("Código de autorización no proporcionado");
         }
-        System.out.println(code);
         // Realizar la solicitud a Google para obtener el token
         String googleUrl = System.getenv("googleUrl");
         String clientId = System.getenv("OAuth2_client-id");
         String clientSecret = System.getenv("OAuth2_client-secret");
         String redirectUri = System.getenv("redirectUriAngular");
-        System.out.println(googleUrl+" A "+clientId+" A "+clientSecret+" a "+redirectUri);
 
 
         // Debe coincidir con el URI registrado en Google
