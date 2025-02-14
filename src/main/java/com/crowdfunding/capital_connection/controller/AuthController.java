@@ -184,7 +184,7 @@ private AccountService accountService;
     }
 
     @PostMapping("/oauth2/token")
-    public ResponseEntity<?> generateTokenForOAuth2User(@RequestBody Map<String, String> body, HttpServletResponse response,HttpServletRequest request) {
+    public ResponseEntity<?> generateTokenForOAuth2User(@RequestBody Map<String, String> body, HttpServletResponse response) {
         String code = body.get("code");  // Obtener el código del cuerpo de la solicitud
         if (code == null) {
             return ResponseEntity.badRequest().body("Código de autorización no proporcionado");
@@ -231,14 +231,13 @@ private AccountService accountService;
                 // Si el correo no está en la base de datos, devolver una respuesta para redirigir al frontend
 
                 // Crear la cookie
-                String domain = getCookieDomain(request);
-
                 Cookie providerIdCookie = new Cookie("provider_id", providerId);
-                providerIdCookie.setDomain(domain);  // Configurar el dominio correcto
-                providerIdCookie.setPath("/");       // Establecer ruta accesible globalmente
-                providerIdCookie.setHttpOnly(false);
-                providerIdCookie.setSecure(domain.equals("capital-connection.onrender.com")); // Solo HTTPS en producción
-                providerIdCookie.setMaxAge(60 * 60); // Duración de la cookie
+                providerIdCookie.setDomain("capital-connection.onrender.com");  // Usar dominio específico
+                providerIdCookie.setPath("/");       // Asegurarse de que sea accesible globalmente
+                providerIdCookie.setHttpOnly(false);  // Permitir el acceso desde JavaScript si es necesario
+                providerIdCookie.setSecure(true);     // Activar solo en HTTPS
+                providerIdCookie.setMaxAge(60 * 60); // Expiración en una hora
+                response.addCookie(providerIdCookie);
 
                 response.addCookie(providerIdCookie);
 
@@ -283,11 +282,5 @@ private AccountService accountService;
         return authService.generateTokens(oauthRequest.getUsername(), oauthRequest.getProviderID());
     }
 
-    private String getCookieDomain(HttpServletRequest request) {
-        String host = request.getHeader("Host");
-        if (host != null && host.contains("capital-connection.onrender.com")) {
-            return "capital-connection.onrender.com";  // Producción
-        }
-        return "localhost";  // Desarrollo
-    }
+
 }
