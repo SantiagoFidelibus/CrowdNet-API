@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -132,5 +133,8 @@ public class ReviewService {
 
         return reviewMapper.toDto(updatedEntity);
     }
+    public boolean findReviewByEntrepreneurshipAndAccount(Long entrepreneurshipId, Long accountId) {
+        return reviewRepository.findByEntrepreneurshipIdAndAccountId(entrepreneurshipId, accountId);
 
+    }
 }

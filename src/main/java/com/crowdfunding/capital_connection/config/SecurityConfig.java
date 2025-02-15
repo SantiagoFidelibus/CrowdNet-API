@@ -165,7 +165,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:4200","https://capital-connection.onrender.com")); // Permitir solicitudes desde el frontend
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Permitir métodos HTTP
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT","PATCH", "DELETE", "OPTIONS")); // Permitir métodos HTTP
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
 

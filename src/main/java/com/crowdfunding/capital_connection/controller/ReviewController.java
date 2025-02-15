@@ -90,4 +90,12 @@ public class ReviewController {
 
         return ResponseEntity.ok(deactivatedReview);
     }
+
+    @Operation(summary = "Search a review for user", description = "Deactivates a review without removing it from the database.")
+    @GetMapping("/a/{accountId}")
+    public ResponseEntity<Boolean> getReviewForAccount(   @PathVariable Long entrepreneurshipId,
+                                                                @PathVariable Long accountId) {
+        boolean exists =  reviewService.findReviewByEntrepreneurshipAndAccount(entrepreneurshipId, accountId);
+        return ResponseEntity.ok(exists);
+    }
 }
