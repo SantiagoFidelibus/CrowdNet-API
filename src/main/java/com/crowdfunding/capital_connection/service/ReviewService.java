@@ -80,6 +80,7 @@ public class ReviewService {
         ReviewEntity reviewEntity = reviewRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Review not found"));
 
+        System.out.println(reviewRequest);
         reviewEntity.setStars(reviewRequest.getStars());
         reviewEntity.setReviewText(reviewRequest.getReviewText());
         reviewEntity.setIsActivated(reviewRequest.getIsActivated());
@@ -121,8 +122,11 @@ public class ReviewService {
     public ReviewRequest updateReviewPartially(Long id, ReviewRequest reviewRequest) {
         ReviewEntity reviewEntity = reviewRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Review not found"));
+        System.out.println(reviewRequest);
 
-        if (reviewRequest.getStars() != 0) {
+        if (reviewRequest.getStars() >= 0) {
+            System.out.println("LLEGUE ACAAAA");
+
             reviewEntity.setStars(reviewRequest.getStars());
         }
         if (reviewRequest.getReviewText() != null) {
@@ -134,7 +138,10 @@ public class ReviewService {
         return reviewMapper.toDto(updatedEntity);
     }
     public boolean findReviewByEntrepreneurshipAndAccount(Long entrepreneurshipId, Long accountId) {
-        return reviewRepository.findByEntrepreneurshipIdAndAccountId(entrepreneurshipId, accountId);
+        System.out.println("IDS: e y a "+ entrepreneurshipId + accountId);
+        boolean exists = reviewRepository.findByEntrepreneurshipIdAndAccountId(entrepreneurshipId, accountId);
+        System.out.println("VALOR EXISTS: "+ exists);
+        return exists;
 
     }
 }

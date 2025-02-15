@@ -95,7 +95,10 @@ public class ReviewController {
     @GetMapping("/a/{accountId}")
     public ResponseEntity<Boolean> getReviewForAccount(   @PathVariable Long entrepreneurshipId,
                                                                 @PathVariable Long accountId) {
+
+        System.out.println("IDS EN CONTROLLER E Y  A: "+entrepreneurshipId +accountId);
         boolean exists =  reviewService.findReviewByEntrepreneurshipAndAccount(entrepreneurshipId, accountId);
+        System.out.println("EXISTS: EN CONTROLLER "+exists);
         return ResponseEntity.ok(exists);
     }
 }
