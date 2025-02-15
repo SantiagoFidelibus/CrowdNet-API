@@ -12,6 +12,6 @@ import java.util.List;
 public interface DonationRepository extends JpaRepository<DonationEntity, Long> {
     List<DonationEntity> findByAccountId(Long accountId);
 
-    @Query(value = "SELECT * FROM donations d WHERE d.entrepreneurship_id IN (SELECT e.id FROM entrepreneurship e WHERE e.account_id = :ownerId)", nativeQuery = true)
+    @Query(value = "SELECT * FROM donations d WHERE d.entrepreneurship_id IN (SELECT e.id FROM entrepreneurships e WHERE e.account_id = :ownerId)", nativeQuery = true)
     List<DonationEntity> findReceivedDonationsByOwner(@Param("ownerId") Long ownerId);
 }
