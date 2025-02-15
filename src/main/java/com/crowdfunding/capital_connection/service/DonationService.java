@@ -100,4 +100,13 @@ public class DonationService {
                 .collect(Collectors.toList());
     }
 
+    public List<DonationRequest> getDonationsByOwnerId(Long ownerId) {
+        accountRepository.findById(ownerId)
+                .orElseThrow(() -> new RuntimeException("Account not found"));
+
+        return donationRepository.findReceivedDonationsByOwner(ownerId).stream()
+                .map(donationMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
 }

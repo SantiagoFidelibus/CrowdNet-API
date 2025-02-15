@@ -41,6 +41,11 @@ public class DonationController {
         List<DonationRequest> donations = donationService.getDonationsByAccountId(accountId);
         return ResponseEntity.ok(donations);
     }
+    @GetMapping("/owner")
+    public ResponseEntity<List<DonationRequest>> getDonationsByOwnerId(@PathVariable Long ownerID) {
+        List<DonationRequest> donations = donationService.getDonationsByOwnerId(ownerID);
+        return ResponseEntity.ok(donations);
+    }
 
     @PatchMapping("/{id}")
     public ResponseEntity<DonationRequest> updateDonationStatus(
