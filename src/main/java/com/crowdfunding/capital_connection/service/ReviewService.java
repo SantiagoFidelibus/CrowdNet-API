@@ -139,7 +139,7 @@ public class ReviewService {
     }
     public boolean findReviewByEntrepreneurshipAndAccount(Long entrepreneurshipId, Long accountId) {
         System.out.println("IDS: e y a "+ entrepreneurshipId + accountId);
-        boolean exists = reviewRepository.findByEntrepreneurshipIdAndAccountId(entrepreneurshipId, accountId);
+        boolean exists = reviewRepository.countByEntrepreneurshipIdAndAccountId(entrepreneurshipId, accountId) > 0;
         System.out.println("VALOR EXISTS: "+ exists);
         return exists;
 

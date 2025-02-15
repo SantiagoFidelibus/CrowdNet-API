@@ -19,8 +19,7 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Long> {
 
 
 
-    @Query("SELECT r FROM ReviewEntity r WHERE r.account.id = :idUser")
-    List<ReviewEntity> findByUserId(@Param("idUser") String idUser);
+    @Query("SELECT COUNT(r) FROM ReviewEntity r WHERE r.entrepreneurship.id = :entrepreneurshipId AND r.account.id = :accountId")
+    Long countByEntrepreneurshipIdAndAccountId(@Param("entrepreneurshipId") Long entrepreneurshipId, @Param("accountId") Long accountId);
 
-    boolean findByEntrepreneurshipIdAndAccountId(Long entrepreneurshipId, Long accountId);
 }
