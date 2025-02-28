@@ -19,7 +19,7 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Long> {
 
 
 
-    @Query("SELECT COUNT(r) FROM ReviewEntity r WHERE r.entrepreneurship.id = :entrepreneurshipId AND r.account.id = :accountId")
+    @Query("SELECT COUNT(r) FROM ReviewEntity r WHERE r.entrepreneurship.id = :entrepreneurshipId AND r.account.id = :accountId AND r.isActivated = true")
     Long countByEntrepreneurshipIdAndAccountId(@Param("entrepreneurshipId") Long entrepreneurshipId, @Param("accountId") Long accountId);
 
 }
