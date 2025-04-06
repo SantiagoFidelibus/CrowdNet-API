@@ -53,7 +53,7 @@ public class DonationController {
             @RequestBody StatusUpdateRequest statusUpdate) {
 
         String status = statusUpdate.getStatus(); // Ahora extraemos bien el valor
-        System.out.println(" AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA juanjoputoooooooooooooo cordes codeaaaaa\n AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA \n id "+ id+ "status "+ statusUpdate);
+        System.out.println(" id "+ id+ "status "+ statusUpdate);
         if (status == null || status.isEmpty()) {
             return ResponseEntity.badRequest().body(null);
         }
